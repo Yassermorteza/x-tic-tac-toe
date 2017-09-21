@@ -1,0 +1,32 @@
+{
+  "name": "x-tic-tac-toe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "nodemon -w src/index.html -w src/index.js -w src/style.scss -es,scss,html -x \"npm run build\"",
+    "prebuild": "mkdirp docs &&  cp src/index.html docs/",
+    "build": "browserify src/index.js -o docs/bundle.js && node-sass src/style.scss docs/style.css && js-beautify src/index.js -o src/index.js",
+    "postbuild": "uglifyjs docs/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yassermorteza/x-tic-tac-toe.git"
+  },
+  "author": "YasserMorteza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yassermorteza/x-tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/Yassermorteza/x-tic-tac-toe#readme",
+  "devDependencies": {
+    "array-matrix": "Yassermorteza/x-matrix",
+    "browserify": "^14.4.0",
+    "cp": "^0.2.0",
+    "js-beautify": "latest",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.5.3",
+    "nodemon": "latest",
+    "uglify-js": "latest"
+  }
+}
