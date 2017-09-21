@@ -275,8 +275,6 @@ function checkWinner(ev) {
         (row + cell === 2) ? o.diagonal2++: false;
         o.storeRow.push(o.row0, o.row1, o.row2, o.diagonal1);
         o.storeCell.push(o.cell0, o.cell1, o.cell2, o.diagonal2);
-        // console.log(o.storeRow);
-        // console.log(o.storeCell);
         if (o.storeRow.includes(3) || o.storeCell.includes(3)) {
             e.divWiner.textContent = "O won the game !!";
             turn = "O";
@@ -323,51 +321,5 @@ e.btn.addEventListener('click', () => {
     e.div.textContent = "X starts";
 });
 
-// conditoin('cross', ev, "X", "O", x.row0, x.row1, x.row2, x.cell0, x.cell1, x.cell2,
-//             x.diagonal1, x.diagonal2, x.storeRow, x.storeCell);
 
-// function conditoin(classCss, ev, p1, p2, r0, r1, r2, c0, c1, c2, d1, d2, stw, stl) {
-
-//     ev.target.classList.add(classCss);
-//     var cell = ev.target.cellIndex;
-//     var row = ev.target.parentElement.rowIndex;
-//     e.div.textContent = "It's " + p2 + " Turn";
-//     turn = p2;
-//     (row === 0) ? r0++ : (row === 1) ? r1++ : r2++;
-//     (cell === 0) ? c0++ : (cell === 1) ? c1++ : c2++;
-//     (row === cell) ? d1++ : false;
-//     (row + cell === 2) ? d2++ : false;
-//     stw.push(r0, r1, r2, d1);
-//     stl.push(c0, c1, c2, d2);
-//     console.log(stw);
-//     console.log(stl);
-//     if (stw.includes(3) || stl.includes(3)) {
-//         e.divWiner.textContent = p1 + "  won the game !!";
-//         turn = p1;
-//         e.div.textContent = "It's " + p1 + "  Turn";
-//         counterX++;
-//         e.spanX.textContent = counterX;
-//         e.divPopUp.textContent = "paly again!";
-//         popUp();
-//     } else if (stw.length === 36 && !stw.includes(3) && !stl.includes(3)) {
-//         e.divPopUp.textContent = "No winner!";
-//         popUp();
-//     }
-
-// };
-// Error {
-//     [0, 0, 0, 2, 1, 0]
-//     [0, 0, 0, 1, 1, 1],
-//     [0, 0, 1, 0, 1, 1],
-//     [1, 0, 0, 0, 0, 2],
-//     [1, 0, 0, 2, 0, 0],
-//     [0, 2, 0, 0, 1, 0],
-//}
-
-//for (var item of storeCellX) {
-// var sum = storeCellX.reduce((sum, num) => sum + num);
-// console.log(sum);
-// (sum % 3 === 0) ? console.log('winner'): console.log('Failed');
-// //}
-//}
 },{"array-matrix":2}]},{},[11]);
