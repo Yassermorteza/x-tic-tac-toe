@@ -95,10 +95,10 @@ footer {
   background-position: center; }
 
 .cross {
-  background-image: url("/img/cross.svg"); }
+  background-image: url("img/cross.svg"); }
 
 .circle {
-  background-image: url("/img/circle.svg"); }
+  background-image: url("img/circle.svg"); }
 
 .hidden {
   display: none; }
