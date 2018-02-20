@@ -227,73 +227,26 @@ let x = Object.create(rowCell);
 let o = Object.create(rowCell);
 
 var cells = document.querySelectorAll('td');
-cells.forEach((td, i) => td.addEventListener('click', checkWinner));
+cells.forEach(td => td.addEventListener('click', checkWinner));
 
 function popUp() {
     e.divPopUp.classList.remove('hidden');
-    cells.forEach((item) => item.removeEventListener('click', checkWinner));
+    cells.forEach(item => item.removeEventListener('click', checkWinner));
     e.divPopUp.addEventListener('click', cleanItems);
 }
 
 function checkWinner(ev) {
     if (turn === "X") {
-        ev.target.classList.add('cross');
-        var cell = ev.target.cellIndex;
-        var row = ev.target.parentElement.rowIndex;
-        e.div.textContent = "It's O Turn";
-        turn = "O";
-        (row === 0) ? x.row0++: (row === 1) ? x.row1++ : x.row2++;
-        (cell === 0) ? x.cell0++: (cell === 1) ? x.cell1++ : x.cell2++;
-        (row === cell) ? x.diagonal1++: false;
-        (row + cell === 2) ? x.diagonal2++: false;
-        x.storeRow.push(x.row0, x.row1, x.row2, x.diagonal1);
-        x.storeCell.push(x.cell0, x.cell1, x.cell2, x.diagonal2);
-        console.log(x.storeRow);
-        console.log(x.storeCell);
-        if (x.storeRow.includes(3) || x.storeCell.includes(3)) {
-            e.divWiner.textContent = "X won the game !!";
-            turn = "X";
-            e.div.textContent = "It's X Turn";
-            counterX++;
-            e.spanX.textContent = counterX;
-            e.divPopUp.textContent = "paly again!";
-            popUp();
-        } else if (x.storeRow.length === 36 || x.storeRow.length === 20 && !x.storeRow.includes(3) && !x.storeCell.includes(3)) {
-            e.divPopUp.textContent = "No winner!";
-            popUp();
-        }
-
+        conditoin('cross', x, 'X', 'O', ev, counterX, e.spanX);
     } else if (turn === "O") {
-        ev.target.classList.add('circle');
-        var cell = ev.target.cellIndex;
-        var row = ev.target.parentElement.rowIndex;
-        e.div.textContent = "It's X Turn";
-        turn = "X";
-        (row === 0) ? o.row0++: (row === 1) ? o.row1++ : o.row2++;
-        (cell === 0) ? o.cell0++: (cell === 1) ? o.cell1++ : o.cell2++;
-        (row === cell) ? o.diagonal1++: false;
-        (row + cell === 2) ? o.diagonal2++: false;
-        o.storeRow.push(o.row0, o.row1, o.row2, o.diagonal1);
-        o.storeCell.push(o.cell0, o.cell1, o.cell2, o.diagonal2);
-        if (o.storeRow.includes(3) || o.storeCell.includes(3)) {
-            e.divWiner.textContent = "O won the game !!";
-            turn = "O";
-            e.div.textContent = "It's O Turn";
-            counterO++;
-            e.spanO.textContent = counterO;
-            e.divPopUp.textContent = "paly again!";
-            popUp();
-        } else if (o.storeRow.length === 20 && !o.storeRow.includes(3) && !o.storeCell.includes(3)) {
-            e.divPopUp.textContent = "No winner!";
-            popUp();
-        }
+        conditoin('circle', o, 'O', 'X', ev, counterO, e.spanO);
     }
     ev.target.removeEventListener('click', checkWinner);
 };
 
 function cleanItems() {
     clearObjects();
-    cells.forEach((item) => {
+    cells.forEach(item => {
         item.addEventListener('click', checkWinner);
         item.classList.remove('cross');
         item.classList.remove('circle');
@@ -321,5 +274,33 @@ e.btn.addEventListener('click', () => {
     e.div.textContent = "X starts";
 });
 
+function conditoin(cssClass, p, p1, p2, ev, counter, span) {
+
+    ev.target.classList.add(cssClass);
+    var cell = ev.target.cellIndex;
+    var row = ev.target.parentElement.rowIndex;
+    e.div.textContent = "It's " + p2 + " Turn";
+    turn = p2;
+    (row === 0) ? p.row0++: (row === 1) ? p.row1++ : p.row2++;
+    (cell === 0) ? p.cell0++: (cell === 1) ? p.cell1++ : p.cell2++;
+    (row === cell) ? p.diagonal1++: false;
+    (row + cell === 2) ? p.diagonal2++: false;
+    p.storeRow.push(p.row0, p.row1, p.row2, p.diagonal1);
+    p.storeCell.push(p.cell0, p.cell1, p.cell2, p.diagonal2);
+    if (p.storeRow.includes(3) || p.storeCell.includes(3)) {
+        e.divWiner.textContent = p1 + "  won the game !!";
+        turn = p1;
+        e.div.textContent = "It's " + p1 + "  Turn";
+        (p1 === 'X') ? counterX++ : counterO++;
+        counter++;
+        span.textContent = counter;
+        e.divPopUp.textContent = "paly again!";
+        popUp();
+    } else if (p.storeRow.length === 20 && !p.storeRow.includes(3) && !p.storeCell.includes(3)) {
+        e.divPopUp.textContent = "No winner!";
+        popUp();
+    }
+
+};
 
 },{"array-matrix":2}]},{},[11]);
