@@ -84,8 +84,6 @@ let rowCell1 = {
 
 let x = JSON.parse(JSON.stringify(rowCell));
 let o = JSON.parse(JSON.stringify(rowCell));
-console.log(x);
-console.log(o)
 
 var cells = document.querySelectorAll('td');
 cells.forEach(td => td.addEventListener('click', checkWinner));
