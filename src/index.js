@@ -69,19 +69,6 @@ let rowCell = {
     diagonal2: 0
 }
 
-let rowCell1 = {
-    storeRow: [],
-    storeCell: [],
-    row0: 0,
-    row1: 0,
-    row2: 0,
-    cell0: 0,
-    cell1: 0,
-    cell2: 0,
-    diagonal1: 0,
-    diagonal2: 0
-}
-
 let x = JSON.parse(JSON.stringify(rowCell));
 let o = JSON.parse(JSON.stringify(rowCell));
 
