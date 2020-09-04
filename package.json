@@ -25,7 +25,7 @@
     "cp": "^0.2.0",
     "js-beautify": "latest",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.13.1",
     "nodemon": "latest",
     "uglify-js": "latest"
   }
